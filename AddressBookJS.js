@@ -141,6 +141,7 @@ function addContact(contact){
     if(!contains(contact.firstName,contact.lastName)){
         try{
             addressBook.push(contact);
+            console.log("Contact Added.");
         }
         catch(e){
             console.error(e);
