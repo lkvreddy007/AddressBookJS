@@ -201,6 +201,11 @@ function deleteContact(firstname,lastname){
     }
 }
 
+function findContactsByCity(city){
+    console.log("Contacts in "+city+" are:");
+    return addressBook.filter(contact=>contact.city==city);
+}
+
 function incrementer(count) {
     count += 1;
     return count;
@@ -211,3 +216,4 @@ addContact(new Contact("Raghava","Mamidi","Srinivasacolony","Mahabubnagar","Tela
 editContact("Krishnavamshi","Lankala","firstName","Krishna");
 deleteContact("Raghava","Mamidi");
 console.log("No of contacts : "+ addressBook.reduce(incrementer, 0));
+console.log(findContactsByCity("Mahabubnagar"));
