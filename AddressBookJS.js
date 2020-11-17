@@ -133,6 +133,9 @@ class Contact{
 
 let addressBook = new Array();
 let city_ContactsInCity_Map = new Map();
+let state_ContactsInState_Map = new Map();
+let city_ContactsCountInCity_Map = new Map();
+let state_ContactsCountInState_Map = new Map();
 
 function contains(firstname,lastname){
     return addressBook.some(con => con.firstName==firstname && con.lastName==lastname);
@@ -207,6 +210,11 @@ function findContactsByCity(city){
     return addressBook.filter(contact=>contact.city==city);
 }
 
+function findContactsByState(state){
+    console.log("Contacts:");
+    return addressBook.filter(contact=>contact.state==state);
+}
+
 function incrementer(count) {
     count += 1;
     return count;
@@ -217,6 +225,21 @@ function viewContactsByCity(){
     return city_ContactsInCity_Map;
 }
 
+function viewContactsByState(){
+    addressBook.filter(contact=>state_ContactsInState_Map.set(contact.state,findContactsByState(contact.state)));
+    return state_ContactsInState_Map;
+}
+
+function viewNumberOfContactsByCity(){
+    addressBook.filter(contact=>city_ContactsCountInCity_Map.set(contact.city,findContactsByCity.length));
+    return city_ContactsCountInCity_Map;
+}
+
+function viewNumberOfContactsByState(){
+    addressBook.filter(contact=>state_ContactsCountInState_Map.set(contact.state,findContactsByState.length));
+    return state_ContactsCountInState_Map;
+}
+
 addContact(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
 addContact(new Contact("Raghava","Mamidi","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"))
 editContact("Krishnavamshi","Lankala","firstName","Krishna");
@@ -224,3 +247,6 @@ deleteContact("Raghava","Mamidi");
 console.log("No of contacts : "+ addressBook.reduce(incrementer, 0));
 console.log(findContactsByCity("Mahabubnagar"));
 console.log(viewContactsByCity());
+console.log(viewContactsByState());
+console.log(viewNumberOfContactsByCity());
+console.log(viewNumberOfContactsByState());
