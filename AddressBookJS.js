@@ -185,9 +185,22 @@ function editContact(firstname,lastname,choice,value){
         console.log(addressBook);
     }
     else{
-        console.log("Contact Doesn't Exists.");
+        console.log("Contact Doesn't Exist.");
+    }
+}
+
+function deleteContact(firstname,lastname){
+    if(contains(firstname,lastname)){
+        addressBook.pop(addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname));
+        console.log("Contact Deleted");
+        console.log(addressBook);
+    }
+    else{
+        console.log("Contact doesn't Exist.")
     }
 }
 
 addContact(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
-editContact("Krishnavamshi","Lankala","firstName","Krishna")
+addContact(new Contact("Raghava","Mamidi","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"))
+editContact("Krishnavamshi","Lankala","firstName","Krishna");
+deleteContact("Raghava","Mamidi");
