@@ -18,10 +18,10 @@ class Contact{
     get firstName(){
         return this._firstName;
     }
-    set firstName(firstname){
+    set firstName(firstName){
         const nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
-        if(nameRegex.test(firstname)){
-            this._firstName=firstname;
+        if(nameRegex.test(firstName)){
+            this._firstName=firstName;
         }
         else{
             throw "Invalid First Name";
@@ -132,11 +132,62 @@ class Contact{
 }
 
 let addressBook = new Array();
-try{
-    addressBook.push(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
-    console.log(addressBook[0].toString());
+
+function contains(firstname,lastname){
+    return addressBook.some(con => con.firstName==firstname && con.lastName==lastname);
 }
-catch(e){
-    console.error(e);
-}    
-console.log(addressBook);
+
+function addContact(contact){
+    if(!contains(contact.firstName,contact.lastName)){
+        try{
+            addressBook.push(contact);
+        }
+        catch(e){
+            console.error(e);
+        }    
+        console.log(addressBook);
+    }
+    else{
+        console.log("Contact Already Exists.");
+    }
+}
+
+function editContact(firstname,lastname,choice,value){
+    if(contains(firstname,lastname)){
+        switch(choice){
+            case "firstName":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).firstName=value;
+                break;
+            case "lastName":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).lastName=value;
+                break;
+            case "address":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).address=value;
+                break;
+            case "city":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).city=value;
+                break;  
+            case "state":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).state=value;  
+                break;
+            case "zip":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).zip=value;
+                break;
+            case "phone":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).phone=value;
+                break;
+            case "email":
+                addressBook.find(contact=>contact.firstName==firstname && contact.lastName==lastname).email=value;
+                break;
+            default:
+                console.log("Enter a valid choice name")
+        }
+        console.log(addressBook);
+    }
+    else{
+        console.log("Contact Doesn't Exists.");
+    }
+}
+
+addContact(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
+editContact("Krishnavamshi","Lankala","firstName","Krishna")
