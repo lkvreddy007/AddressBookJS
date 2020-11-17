@@ -254,7 +254,62 @@ function sortAddressBookByFirstName(){
     });
 
     addressBook.forEach((contact)=>{
-        console.log("Contacts After Sorting");
+        console.log("Contacts After Sorting By First Name");
+        console.log(contact);
+    });
+}
+
+function sortAddressBookByCity(){
+    addressBook.sort((contact1,contact2)=>{
+        let con1=contact1.city.toLowerCase();
+        let con2=contact2.city.toLowerCase();
+        if(con1<con2){
+            return -1;
+        }
+        if(con1>con2){
+            return 1;
+        }
+        return(0);
+    });
+
+    addressBook.forEach((contact)=>{
+        console.log("Contacts After Sorting By City");
+        console.log(contact);
+    });
+}
+
+function sortAddressBookByState(){
+    addressBook.sort((contact1,contact2)=>{
+        let con1=contact1.state.toLowerCase();
+        let con2=contact2.state.toLowerCase();
+        if(con1<con2){
+            return -1;
+        }
+        if(con1>con2){
+            return 1;
+        }
+        return(0);
+    });
+
+    addressBook.forEach((contact)=>{
+        console.log("Contacts After Sorting By State");
+        console.log(contact);
+    });
+}
+
+function sortAddressBookByFirstName(){
+    addressBook.sort((contact1,contact2)=>{
+        if(contact1.zip<contact2.zip){
+            return -1;
+        }
+        if(contact1.zip>contact2.zip){
+            return 1;
+        }
+        return(0);
+    });
+
+    addressBook.forEach((contact)=>{
+        console.log("Contacts After Sorting By Zip");
         console.log(contact);
     });
 }
