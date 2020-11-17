@@ -200,7 +200,13 @@ function deleteContact(firstname,lastname){
     }
 }
 
+function incrementer(count) {
+    count += 1;
+    return count;
+}
+
 addContact(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
 addContact(new Contact("Raghava","Mamidi","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"))
 editContact("Krishnavamshi","Lankala","firstName","Krishna");
 deleteContact("Raghava","Mamidi");
+console.log("No of contacts : "+ addressBook.reduce(incrementer, 0));
