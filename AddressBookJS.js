@@ -131,10 +131,12 @@ class Contact{
     }
 }
 
+let addressBook = new Array();
 try{
-    let contact = new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com");
-    console.log(contact.toString());
+    addressBook.push(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
+    console.log(addressBook[0].toString());
 }
 catch(e){
     console.error(e);
 }    
+console.log(addressBook);
