@@ -240,6 +240,25 @@ function viewNumberOfContactsByState(){
     return state_ContactsCountInState_Map;
 }
 
+function sortAddressBookByFirstName(){
+    addressBook.sort((contact1,contact2)=>{
+        let con1=contact1.firstName.toLowerCase();
+        let con2=contact2.firstName.toLowerCase();
+        if(con1<con2){
+            return -1;
+        }
+        if(con1>con2){
+            return 1;
+        }
+        return(0);
+    });
+
+    addressBook.forEach((contact)=>{
+        console.log("Contacts After Sorting");
+        console.log(contact);
+    });
+}
+
 addContact(new Contact("Krishnavamshi","Lankala","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"));
 addContact(new Contact("Raghava","Mamidi","Srinivasacolony","Mahabubnagar","Telangana",509001, "91 9484949498","abc@gmail.com"))
 editContact("Krishnavamshi","Lankala","firstName","Krishna");
@@ -250,3 +269,4 @@ console.log(viewContactsByCity());
 console.log(viewContactsByState());
 console.log(viewNumberOfContactsByCity());
 console.log(viewNumberOfContactsByState());
+sortAddressBookByFirstName();
